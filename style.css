@@ -1,0 +1,286 @@
+body {
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+/*HOVER BUTTONS*/
+.hover-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 20%;
+}
+
+.hover-button {
+    width: 200px;
+    height: 70px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: whitesmoke;
+    font-weight: bold;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.hover-button:first-child {
+    background-color: #24913C;
+}
+
+.hover-button:nth-child(2) {
+    background-color: #04859D;
+}
+
+.hover-button:nth-child(3) {
+    background-color: #FF9D40	;
+}
+
+.hover-button:hover {
+    filter: none;
+    transform: scale(1.1);
+}
+
+.hover-buttons-container:hover .hover-button:not(:hover) {
+    filter: blur(2px);
+}
+
+
+/*TOGGLE BUTTON*/
+.toggle-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #1D1B1B;
+    border: 5px solid #190D0C;
+    position: relative;
+    cursor: pointer;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.circle:first-child {
+    border: 3px solid green;
+}
+
+.circle:nth-child(2) {
+    border: 3px solid red;
+}
+
+.toggle-button-container:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(#3b3a4e, #272733);
+    transition: left 0.3s ease;
+}
+
+.toggle-button-container.active:after {
+    left: calc(100% - 50px);
+}
+
+.appear {
+    animation: 2s show ease;
+}
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes hide {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/*WINDOW CARD */
+.window-card {
+    width: 350px;
+    height: 250px;
+    border: 3px solid black;
+    box-shadow: 15px 15px black;
+    transition: transform 0.3s ease;
+}
+
+.window-card:hover {
+    transform: translateY(10px);
+}
+
+.window-card-header {
+    border-bottom: 3px solid black;
+    padding-left: 10px;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.window-card-content {
+    height: 84%;
+    padding: 0 10px;
+    background-color: #EB6AA4;
+}
+
+.window-card-content-text {
+    margin: 0;
+    padding-top: 10px;
+    height: 33%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.window-card-content-button {
+    width: 30%;
+    height: 40px;
+    margin-top: 10px;
+    font-weight: bold;
+    background-color: #37DD6F;
+    border: 3px solid black;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.window-card-content-button::before {
+    content: '';
+    position: absolute;
+    width: 108%;
+    height: 118%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: black;
+    transform: translate3d(0, 0, -1em);
+}
+
+.window-card-content-button:hover {
+    background-color: #7080D7;
+    transform: translate(0.15em, 0.15em);
+}
+
+.window-card-content-button:hover::before {
+    transform: translate3d(-0.1em, -0.1em, -1em);
+}
+
+/*SPINNING CARD*/
+.spinning-card-container {
+    position: relative;
+}
+
+.spinning-card-container .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.spinning-card-container .card .card-text,
+.spinning-card-container .card .card-title {
+    margin: 0;
+    color: white;
+}
+
+.spinning-card-container .card .card-text:nth-child(2) {
+    font-weight: lighter;
+    color: 	#C6ADC4;
+}
+
+.spinning-card-container .card .card-text:nth-child(3){
+    font-weight: lighter;
+    color: #e81cff;;
+}
+
+.card::before {
+    position: absolute;
+    content: '';
+    height: 113%;
+    width: 114%;
+    border-radius: 10px;
+    top: -3%;
+    left: -3%;
+    background: linear-gradient(to top left, #e81cff 0%, #40c9ff 100% );
+    z-index: -1;
+    transition: transform 0.4s ease;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -5%; left: -5%;
+    height: 116%; width: 118%;
+    border-radius: 10px;
+    background-image: linear-gradient(to top left, #e81cff, #40c9ff);
+    filter: blur(10px);
+    z-index: -2;
+    transition: transform 0.4s ease;
+}
+
+.card:hover::before, .card:hover::after{
+    transform: rotate(180deg);
+}
+
+/*DISCORD TOOLTIP*/
+.discord-tooltip {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(108, 72, 215);
+    border: 5px solid white;
+    background-image: url('public/discord-logo-white.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.discord-tooltip::before {
+    content: 'Discover';
+    position: absolute;
+    width: 150px;
+    top: 0;
+    left: -150%;
+    height: 70px;
+    border-radius: 35px;
+    background-color: rgba(108, 72, 215);
+    opacity: 0;
+
+    text-align: end;
+    padding-right: 30px;
+    line-height: 70px;
+    font-size: 18px;
+    color: white;
+    z-index: -1;
+    transition: left 0.3s ease, opacity 0.3s ease;
+}
+
+.discord-tooltip:hover::before {
+    left: 0;
+    opacity: 1;
+}
